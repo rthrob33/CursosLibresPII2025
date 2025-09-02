@@ -1,4 +1,6 @@
 using CursosLibres.Views;
+using CursosLibres.Views.Alumnos;
+using CursosLibres.Views.Docentes;
 
 namespace CursosLibres
 {
@@ -33,5 +35,42 @@ namespace CursosLibres
         {
             /*/*new FrmDocente { MdiParent = this }.Show();*/
         }
+
+        private void alumnosActualesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frmExistente = Application.OpenForms
+            .OfType<FrmAlumnos>()
+            .FirstOrDefault();
+
+            if (frmExistente == null)
+            {
+                FrmAlumnos frm = new FrmAlumnos();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+            {
+                frmExistente.Activate();
+            }
+        }
+
+        private void nuevoAlumnoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frmExistente = Application.OpenForms
+            .OfType<FrmNuevoAlumno>()
+            .FirstOrDefault();
+
+            if (frmExistente == null)
+            {
+                FrmNuevoAlumno frm = new FrmNuevoAlumno();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+            {
+                frmExistente.Activate();
+            }
+        }
     }
+
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CursosLibres.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,30 @@ using System.Windows.Forms;
 
 namespace CursosLibres.Views
 {
-	public partial class FrmAlumnos : Form
-	{
-		public FrmAlumnos()
-		{
-			InitializeComponent();
-		}
-	}
+    public partial class FrmAlumnos : Form
+    {
+
+        private readonly List<Alumno> _alumnos = new();
+        public FrmAlumnos()
+        {
+            InitializeComponent();
+        }
+
+        private void CargarAlumnos()
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = _alumnos;
+        }
+
+        public void AgregarAlumno(Alumno alumno)
+        {
+            _alumnos.Add(alumno);
+            CargarAlumnos();
+        }
+
+        private void FrmAlumnos_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
